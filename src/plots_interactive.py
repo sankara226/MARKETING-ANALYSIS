@@ -260,7 +260,8 @@ def build_dashboard_html(df: pd.DataFrame, ml_results: dict, path=DASHBOARD_PATH
     all_figures = current_figures + prediction_figures
     divs = []
     for i, fig in enumerate(all_figures):
-        include_js = "cdn" if i == 0 else False
+        # Embed plotly.js inline (not via CDN) so the dashboard works fully offline/on localhost.
+        include_js = True if i == 0 else False
         divs.append(fig.to_html(full_html=False, include_plotlyjs=include_js, div_id=f"plot-{i}"))
 
     current_divs = divs[: len(current_figures)]
