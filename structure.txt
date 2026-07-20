@@ -1,0 +1,29 @@
+MARKETING CAMPAIGN ANALYSIS/
+│
+├── data/
+│   ├── messy_marketing_campaign.csv   (raw, untouched source data)
+│   └── .gitkeep
+│
+├── outputs/
+│   ├── cleaned_marketing_campaign.csv (pipeline-generated clean dataset)
+│   ├── dashboard.html                 (interactive Plotly dashboard)
+│   ├── report.pdf                     (final PDF report)
+│   ├── model.joblib                   (trained sklearn pipeline)
+│   └── figures/                       (static PNGs used in the PDF)
+│
+├── src/
+│   ├── __init__.py
+│   ├── data_loader.py           # CSV loading, path configuration
+│   ├── cleaning.py              # normalization, fuzzy canonicalization, geo-correction, imputation
+│   ├── statistics_analysis.py   # descriptive stats, groupby aggregations, pivots, correlations
+│   ├── business_insights.py     # data-driven insights and recommendations
+│   ├── ml_model.py              # feature engineering, model selection, prediction
+│   ├── plots_interactive.py     # Plotly figures + responsive HTML dashboard
+│   ├── plots_static.py          # matplotlib/seaborn static PNGs
+│   └── report_pdf.py            # reportlab PDF report assembly
+│
+├── main.py                  # orchestrates the full pipeline end to end
+├── requirements.txt
+├── .gitignore
+├── README.md
+└── structure.txt

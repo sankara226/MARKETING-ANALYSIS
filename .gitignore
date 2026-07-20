@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.venv/
+venv/
+.DS_Store
+*.egg-info/
+
+# Deliverables are intentionally tracked (NOT ignored):
+# outputs/report.pdf, outputs/dashboard.html, outputs/cleaned_marketing_campaign.csv
+outputs/model.joblib
