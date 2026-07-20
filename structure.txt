@@ -23,6 +23,7 @@ MARKETING CAMPAIGN ANALYSIS/
 │   └── report_pdf.py            # reportlab PDF report assembly
 │
 ├── main.py                  # orchestrates the full pipeline end to end
+├── serve_dashboard.py       # local HTTP server to preview outputs/dashboard.html
 ├── requirements.txt
 ├── .gitignore
 ├── README.md

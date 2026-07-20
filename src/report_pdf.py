@@ -196,6 +196,16 @@ def build_report(
     story.append(Paragraph("Monthly Units Sold Trend", STYLES["h2"]))
     story.append(Image(static_figures["units_sold_trend"], width=6 * inch, height=3.4 * inch))
     story.append(Paragraph("Time trend showing total units sold aggregated by month.", STYLES["caption"]))
+    story.append(PageBreak())
+
+    story.append(Paragraph("Budget Efficiency by Channel", STYLES["h2"]))
+    story.append(Image(static_figures["channel_efficiency"], width=5.5 * inch, height=3.4 * inch))
+    story.append(Paragraph("Units sold per dollar spent, ranking channels by return on budget.", STYLES["caption"]))
+
+    story.append(Paragraph("Product Category Breakdown", STYLES["h2"]))
+    story.append(Image(static_figures["category_breakdown"], width=4 * inch, height=4 * inch))
+    story.append(Paragraph("Share of total units sold by product category.", STYLES["caption"]))
+    story.append(PageBreak())
 
     story.append(Paragraph("Correlation Between Campaign Metrics", STYLES["h2"]))
     story.append(Image(static_figures["correlation_heatmap"], width=4.2 * inch, height=3.6 * inch))
@@ -243,10 +253,20 @@ def build_report(
     )
     story.append(PageBreak())
 
+    story.append(Paragraph("Model Comparison", STYLES["h2"]))
+    story.append(Image(static_figures["model_comparison"], width=5.5 * inch, height=3.4 * inch))
+    story.append(Paragraph("Test R² for each candidate model; higher is better.", STYLES["caption"]))
+    story.append(PageBreak())
+
     story.append(Paragraph("Top Feature Importances", STYLES["h2"]))
     story.append(Image(static_figures["feature_importance"], width=5.5 * inch, height=4.1 * inch))
     story.append(Paragraph("Actual vs Predicted Conversion Rate", STYLES["h2"]))
     story.append(Image(static_figures["actual_vs_predicted"], width=4.2 * inch, height=4.2 * inch))
+    story.append(PageBreak())
+
+    story.append(Paragraph("Prediction Residuals", STYLES["h2"]))
+    story.append(Image(static_figures["residuals"], width=5 * inch, height=3.6 * inch))
+    story.append(Paragraph("Distribution of actual minus predicted conversion rate; centered on zero indicates unbiased predictions.", STYLES["caption"]))
     story.append(PageBreak())
 
     story.append(Paragraph("Business Insights &amp; Recommendations", STYLES["h1"]))

@@ -88,6 +88,8 @@ def train_and_select_model(df: pd.DataFrame) -> dict:
         "y_test": y_test.reset_index(drop=True),
         "y_pred": pd.Series(best_preds),
         "feature_importance": feature_importance,
+        "channel_test": X_test["campaign_channel"].reset_index(drop=True),
+        "city_test": X_test["city"].reset_index(drop=True),
     }
 
 

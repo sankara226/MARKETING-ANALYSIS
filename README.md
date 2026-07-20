@@ -40,6 +40,7 @@ MARKETING CAMPAIGN ANALYSIS/
 │   └── report_pdf.py            # reportlab PDF report assembly
 │
 ├── main.py                  # orchestrates the full pipeline end to end
+├── serve_dashboard.py       # local HTTP server to preview outputs/dashboard.html
 ├── requirements.txt
 └── structure.txt
 ```
@@ -56,6 +57,18 @@ python3 main.py
 Running `main.py` executes the whole pipeline (load → clean → export CSV → statistics → ML training →
 business insights → interactive dashboard → PDF report) and prints progress for each stage. All
 outputs land in `outputs/`.
+
+## Previewing the Dashboard on Localhost
+
+`outputs/dashboard.html` can be opened directly as a file, but some browsers restrict local scripts
+when opened via `file://`. To preview it properly over HTTP:
+
+```bash
+python3 serve_dashboard.py
+```
+
+This serves the `outputs/` folder on `http://localhost:8000` and opens
+`http://localhost:8000/dashboard.html` in your default browser automatically. Stop it with `Ctrl+C`.
 
 ## Cleaning Pipeline Highlights
 
@@ -87,14 +100,27 @@ outputs land in `outputs/`.
   dataset is largely independent of the available campaign attributes — a finding reported honestly
   rather than masked.
 
-## Screenshots
+## Visualizations
 
-Static chart PNGs used throughout the PDF report are in `outputs/figures/`:
-`budget_by_channel.png`, `conversion_by_city.png`, `units_sold_trend.png`,
-`correlation_heatmap.png`, `feature_importance.png`, `actual_vs_predicted.png`.
+The dashboard (`outputs/dashboard.html`) has 12 interactive Plotly charts, split into two sections:
 
-The fully interactive version of these (plus an animated budget-vs-conversion scatter and a
-geographic breakdown) is in `outputs/dashboard.html` — open it directly in a browser.
+**Current Performance** (descriptive views of the cleaned data as it stands):
+- Budget spent vs. conversion rate by channel, animated month-by-month
+- Geographic breakdown: units sold and conversion rate by country
+- Monthly time trend of budget spend and conversion rate
+- Budget efficiency: units sold per $ spent, by channel
+- Product category breakdown (share of units sold)
+- Conversion rate distribution across all campaigns
+- Correlation heatmap between budget, clicks, conversion rate and units sold
+
+**Model Predictions** (how the trained conversion-rate model performs):
+- Model comparison: test R² and RMSE across candidates
+- Top feature importances from the winning model
+- Actual vs. predicted conversion rate (test set)
+- Prediction residuals distribution
+- Actual vs. predicted conversion rate by channel (test set)
+
+Static PNG equivalents used throughout the PDF report are in `outputs/figures/`.
 
 ## Tech Stack
 
